@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -5,23 +6,23 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'pip install -r requirements.txt'
-                sh 'pip install pytest'
-                sh 'pytest test_app.py'
+                sh 'python3 -m pip install -r requirements.txt'
+                sh 'python3 -m pip install pytest'
+                sh 'python3 -m pytest test_app.py'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                sh 'pip install -r requirements.txt'
+                sh 'python3 -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Application') {
             steps {
                 echo 'Starting application...'
-                sh 'python app.py &'
+                sh 'python3 app.py &'
             }
         }
 
